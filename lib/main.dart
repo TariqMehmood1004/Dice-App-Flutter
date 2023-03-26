@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'components/controllers/splash_screen/splash_screen_controller.dart';
 import 'components/utilities/colors/app_colors.dart';
 
 void main() {
-  runApp(const MaterialApp(home: MyApp()));
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
