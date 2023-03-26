@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../utilities/colors/app_colors.dart';
 import '../dashboard/dashboard.dart';
-import 'package:rive/rive.dart';
 
 class SplashScreenController extends StatefulWidget {
   const SplashScreenController({super.key});
