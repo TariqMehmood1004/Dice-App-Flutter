@@ -1,7 +1,12 @@
+import 'dart:async';
 import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../utilities/colors/app_colors.dart';
+import 'package:resume/components/contents/contents_screen.dart';
+import 'package:resume/utils/colors/app_colors.dart';
 
 class DashboardController extends StatefulWidget {
   const DashboardController({super.key});
@@ -11,6 +16,21 @@ class DashboardController extends StatefulWidget {
 }
 
 class _DashboardControllerState extends State<DashboardController> {
+  @override
+  void initState() {
+    LicenseRegistry.addLicense(() async* {
+      final license = await rootBundle.loadString('google_fonts/OFL.txt');
+      yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+    });
+    super.initState();
+    Timer(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => const ContentScreenController()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +72,15 @@ class _DashboardControllerState extends State<DashboardController> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Timer(const Duration(milliseconds: 100), () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ContentScreenController()));
+                        });
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.50,
                         padding: const EdgeInsets.all(10.0),

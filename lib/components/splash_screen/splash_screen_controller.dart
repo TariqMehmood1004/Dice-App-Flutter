@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../../utilities/colors/app_colors.dart';
-import '../dashboard/dashboard_controller.dart';
+import 'package:resume/components/dashboard/dashboard_controller.dart';
+import 'package:resume/utils/colors/app_colors.dart';
 
 class SplashScreenController extends StatefulWidget {
   const SplashScreenController({super.key});
