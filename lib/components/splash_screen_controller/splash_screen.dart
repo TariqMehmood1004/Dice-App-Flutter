@@ -126,6 +126,22 @@ class _DashboardControllerState extends State<DashboardController> {
   int diceNo = 1;
   String winner = "";
   IconData icon = Icons.hourglass_empty;
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.forward(from: 0).then((_) {
+      update();
+    });
+    _controller.reverse(from: 1);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   void update() {
     setState(() {
