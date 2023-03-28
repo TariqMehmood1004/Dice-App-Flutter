@@ -131,10 +131,8 @@ class _DashboardControllerState extends State<DashboardController> {
   @override
   void initState() {
     super.initState();
-    _controller.forward(from: 0).then((_) {
-      update();
-    });
-    _controller.reverse(from: 1);
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(microseconds: 300));
   }
 
   @override
@@ -144,10 +142,13 @@ class _DashboardControllerState extends State<DashboardController> {
   }
 
   void update() {
-    setState(() {
-      //Random.nextInt(n) returns random integer from 0 to n-1
-      diceNo = Random().nextInt(6) + 1;
+    _controller.forward(from: 0).then((_) {
+      setState(() {
+        //Random.nextInt(n) returns random integer from 0 to n-1
+        diceNo = Random().nextInt(6) + 1;
+      });
     });
+    _controller.reverse(from: 1);
   }
 
   @override
@@ -159,30 +160,39 @@ class _DashboardControllerState extends State<DashboardController> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    update();
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Transform.rotate(
+                  angle: _controller.value * pi,
+                  child: child,
+                );
+              },
+              child: Container(
+                width: 250,
+                height: 250,
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      update();
 
-                    if (diceNo != 6) {
-                      winner = "";
-                      icon = Icons.hourglass_empty;
-                    } else {
-                      winner = "Winner";
-                      icon = Icons.sentiment_satisfied_rounded;
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image(
-                      image: AssetImage('assets/images/dice-$diceNo.png'),
+                      if (diceNo != 6) {
+                        winner = "";
+                        icon = Icons.hourglass_empty;
+                      } else {
+                        winner = "Winner";
+                        icon = Icons.sentiment_satisfied_rounded;
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image(
+                        image: AssetImage('assets/images/dice-$diceNo.png'),
+                      ),
                     ),
                   ),
                 ),
