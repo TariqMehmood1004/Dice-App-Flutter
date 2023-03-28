@@ -110,4 +110,5 @@ class _SplashScreenControllerState extends State<SplashScreenController> {
       ),
     );
   }
+  
 }

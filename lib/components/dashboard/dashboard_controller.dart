@@ -36,63 +36,67 @@ class _DashboardControllerState extends State<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    update();
+      body: Dice(),
+      bottomNavigationBar: NavigationBarWidget(),
+    );
+  }
 
-                    if (diceNo != 6) {
-                      winner = "";
-                      icon = Icons.hourglass_empty;
-                    } else {
-                      winner = "Winner";
-                      icon = Icons.sentiment_satisfied_rounded;
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image(
-                      image: AssetImage('assets/images/dice-$diceNo.png'),
-                    ),
+  Center diceContainer() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 250,
+            height: 250,
+            decoration: BoxDecoration(
+              color: Colors.amber,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  update();
+
+                  if (diceNo != 6) {
+                    winner = "";
+                    icon = Icons.hourglass_empty;
+                  } else {
+                    winner = "Winner";
+                    icon = Icons.sentiment_satisfied_rounded;
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image(
+                    image: AssetImage('assets/images/dice-$diceNo.png'),
                   ),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(icon),
-                Text(
-                  winner.toUpperCase(),
-                  style: const TextStyle(
-                    color: Colors.amber,
-                    fontSize: 22,
-                    fontFamily: 'Roboto',
-                  ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon),
+              Text(
+                winner.toUpperCase(),
+                style: const TextStyle(
+                  color: Colors.amber,
+                  fontSize: 22,
+                  fontFamily: 'Roboto',
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
-      bottomNavigationBar: const NavigationBarWidget(),
     );
   }
 }
