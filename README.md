@@ -5,9 +5,9 @@
     <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/1.jpg" alt="Dashboard image"/></td>
     <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/2.jpg" alt="Dashboard image"/></td>
     <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/3.jpg" alt="Dashboard image"/></td>
-    <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/4.jpg" alt="Dashboard image"/></td>
   </tr>
-  <tr>
+  <tr>    
+    <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/4.jpg" alt="Dashboard image"/></td>
     <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/5.jpg" alt="Dashboard image"/></td>
     <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/6.jpg" alt="Dashboard image"/></td>
   </tr>
