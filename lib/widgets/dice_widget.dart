@@ -74,7 +74,7 @@ class _DiceScreenState extends State<DiceScreen> {
         children: [
           FloatingActionButton(
             onPressed: _deleteDice,
-            tooltip: 'Add Dice',
+            tooltip: 'Delete Dice',
             child: const Icon(Icons.delete),
           ),
           const SizedBox(
