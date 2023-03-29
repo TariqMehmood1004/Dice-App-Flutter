@@ -23,3 +23,24 @@ In the NavigationBarWidget class, the PageView widget is used to show the three 
 
 The <b>Dice</b> and <b>Dice2</b> classes are almost identical, with the difference being that Dice2 has two dice. Both classes use a Random object to generate random numbers between 1 and 6 when the dice are rolled. The update() and update2() methods are called when the user taps on the dice image to update the state and re-render the dice.
 
+## DashboardScreen contoller
+<b>_DashboardControllerState.</b> It has a Random instance, an integer variable diceNo, and a String variable winner. The state also has an AnimationController instance named _controller, which will be disposed of in the dispose() method.
+
+The update() method updates the diceNo variable with a random integer between 1 and 6. The build() method returns a Scaffold widget with a Dice widget as the body and a NavigationBarWidget at the bottom.
+
+The diceContainer() method returns a Center widget with a Column child containing a single Container. This Container has a width and height of 250 and a decoration with a yellowish color and rounded corners. The GestureDetector widget has an onTap property that triggers the update() method and sets the winner variable to an empty string if the diceNo is not equal to 6, otherwise, it sets winner to "Winner". The Image widget displays an asset image of a dice with the number represented by the diceNo variable.
+
+## splash screen controller
+This is a Flutter code for a SplashScreenController that shows a splash screen for 3 seconds and then navigates to the DashboardController.
+
+The initState method is called when the widget is inserted into the widget tree. In this method, the SystemUiOverlayStyle is set to change the color of the status bar to white. After a delay of 3 seconds, the Navigator.pushReplacement method is used to navigate to the DashboardController widget, replacing the current widget.
+
+The build method returns a Scaffold widget with a white background and a Centered child. The child is a Container widget with a transparent background and a Column child with two Container widgets. The first Container has a CircleAvatar child displaying the app store image. The second Container has a CircularProgressIndicator with a text showing the name of the company, Notio Software Solutions.
+
+Overall, this code creates a simple splash screen with a loading indicator that lasts for 3 seconds before navigating to the main dashboard screen.
+
+
+
+
+
+
