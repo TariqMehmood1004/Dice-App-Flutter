@@ -1,3 +1,11 @@
+
+## Final output
+<table>
+  <tr>
+    <td><img src="https://github.com/TariqMehmood1004/Dice-App-Flutter/blob/main/output/1.jpg" alt="Dashboard image"/></td>
+  </tr>
+</table>
+
 # Documentaion and Functional Requirements
 
 ## Dice Flutter app
