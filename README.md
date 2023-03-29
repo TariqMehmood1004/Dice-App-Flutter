@@ -1,4 +1,6 @@
-# Dice Flutter app
+#Documentaion and Functional Requirements
+
+## Dice Flutter app
 
 A new Flutter project.
 
