@@ -1,4 +1,4 @@
-#Documentaion and Functional Requirements
+# Documentaion and Functional Requirements
 
 ## Dice Flutter app
 
