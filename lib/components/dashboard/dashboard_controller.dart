@@ -18,7 +18,6 @@ class _DashboardControllerState extends State<DashboardController> {
   Random random = Random();
   int diceNo = 1;
   String winner = "";
-  IconData icon = Icons.hourglass_empty;
   late AnimationController _controller;
 
   @override
@@ -63,10 +62,8 @@ class _DashboardControllerState extends State<DashboardController> {
 
                   if (diceNo != 6) {
                     winner = "";
-                    icon = Icons.hourglass_empty;
                   } else {
                     winner = "Winner";
-                    icon = Icons.sentiment_satisfied_rounded;
                   }
                 },
                 child: Padding(
@@ -77,23 +74,6 @@ class _DashboardControllerState extends State<DashboardController> {
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon),
-              Text(
-                winner.toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.amber,
-                  fontSize: 22,
-                  fontFamily: 'Roboto',
-                ),
-              ),
-            ],
           ),
         ],
       ),

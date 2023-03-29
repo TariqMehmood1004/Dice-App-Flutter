@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import 'dice-widget.dart';
+
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
 
@@ -11,6 +13,14 @@ class NavigationBarWidget extends StatefulWidget {
 class _NavigationBarWidgetState extends State<NavigationBarWidget> {
   int _currentIndex = 0;
   late PageController _pageController;
+
+  final List<DiceWidget> _diceList = [];
+
+  void _addDice() {
+    setState(() {
+      _diceList.add(const DiceWidget());
+    });
+  }
 
   @override
   void initState() {
@@ -53,82 +63,49 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           const Dice2(),
           Container(
             color: Colors.transparent,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 725,
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                    ),
-                    padding: const EdgeInsets.all(12.0),
-                    child: ListView.builder(
-                      itemCount: _diceCounters.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          width: 50,
-                          height: 70,
-                          margin: const EdgeInsets.only(top: 100),
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: const Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Image(
-                                image: AssetImage('assets/images/dice-1.png'),
-                              ),
-                            ),
-                          ),
-                        );
+            margin: const EdgeInsets.only(top: 200),
+            child: const DiceScreen(),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 70,
+            alignment: Alignment.centerRight,
+            decoration: const BoxDecoration(
+              color: Colors.red,
+            ),
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  backgroundColor: Colors.blueAccent,
+                  onPressed: () {
+                    setState(() {
+                      _addCounter;
+                      debugPrint('added widget');
+                    });
+                  },
+                  child: const Icon(
+                    Icons.delete,
+                    size: 25,
+                  ),
+                ),
+                FloatingActionButton(
+                  backgroundColor: Colors.black,
+                  onPressed: () {
+                    setState(
+                      () {
+                        _addDice;
+                        debugPrint('added widget');
                       },
-                    ),
+                    );
+                  },
+                  child: const Icon(
+                    Icons.plus_one,
+                    size: 25,
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 70,
-                    alignment: Alignment.centerRight,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                    ),
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        FloatingActionButton(
-                          backgroundColor: Colors.blueAccent,
-                          onPressed: () {
-                            setState(() {
-                              _addCounter;
-                              debugPrint('added widget');
-                            });
-                          },
-                          child: const Icon(
-                            Icons.delete,
-                            size: 25,
-                          ),
-                        ),
-                        FloatingActionButton(
-                          backgroundColor: Colors.black,
-                          onPressed: () {
-                            setState(() {
-                              _addCounter;
-                              debugPrint('added widget');
-                            });
-                          },
-                          child: const Icon(
-                            Icons.plus_one,
-                            size: 25,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -219,21 +196,6 @@ class _DiceState extends State<Dice> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(icon),
-                Text(
-                  winner.toUpperCase(),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    fontFamily: 'Roboto',
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),
@@ -315,21 +277,6 @@ class _Dice2State extends State<Dice2> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(icon),
-                        Text(
-                          winner.toUpperCase(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            fontFamily: 'Roboto',
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
@@ -352,7 +299,6 @@ class _Dice2State extends State<Dice2> {
                             update2();
 
                             if (diceNo1 != 6) {
-                              winner2 = "";
                               icon = Icons.hourglass_empty;
                             } else {
                               winner2 = 'Winner'.toUpperCase();
@@ -369,29 +315,51 @@ class _Dice2State extends State<Dice2> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(icon),
-                        Text(
-                          winner2.toUpperCase(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Roboto',
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class DiceWidget extends StatefulWidget {
+  const DiceWidget({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _DiceWidgetState createState() => _DiceWidgetState();
+}
+
+class _DiceWidgetState extends State<DiceWidget> {
+  int _diceValue = 1;
+
+  void _rollDice() {
+    setState(() {
+      _diceValue = Random().nextInt(6) + 1;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _rollDice,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Center(
+              child: Image(
+            image: AssetImage('assets/images/dice-$_diceValue.png'),
+          )),
         ),
       ),
     );
