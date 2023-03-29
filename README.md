@@ -15,7 +15,7 @@
 
 # Documentaion and Functional Requirements
 
-## Dice Flutter app
+## NOTIO Software Solutions - Dice Flutter app
 
 A new Flutter project.
 
