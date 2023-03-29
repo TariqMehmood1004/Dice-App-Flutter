@@ -15,9 +15,12 @@
 
 # Documentaion and Functional Requirements
 
-## NOTIO Software Solutions - Dice Flutter app
 
-A new Flutter project.
+
+## NOTIO Software Solutions - Dice Flutter app
+Dice have been used for centuries as a tool for games and gambling. However, with the rise of technology, the traditional physical dice have been replaced by digital ones. A dice app is a software application that simulates the rolling of dice on a digital device such as a smartphone or tablet. With a dice app, users can roll dice quickly and easily without the need for physical dice. These apps can be used for a wide range of activities such as board games, role-playing games, and educational activities. Additionally, many dice apps come with features such as different dice types, customizable dice, and the ability to roll multiple dice at once. In this digital age, a dice app is a convenient and practical alternative to traditional dice.
+
+
 
 ## Dice screen Widget
 This is a Flutter Dart code that implements a dice rolling game.
