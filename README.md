@@ -21,5 +21,5 @@ The code has a bottom navigation bar with three pages. The first and second page
 
 In the NavigationBarWidget class, the PageView widget is used to show the three pages with the dice. The BottomNavigationBar widget is used to display the bottom navigation bar with three tabs.
 
-The Dice and Dice2 classes are almost identical, with the difference being that Dice2 has two dice. Both classes use a Random object to generate random numbers between 1 and 6 when the dice are rolled. The update() and update2() methods are called when the user taps on the dice image to update the state and re-render the dice.
+The <b>Dice</b> and <b>Dice2</b> classes are almost identical, with the difference being that Dice2 has two dice. Both classes use a Random object to generate random numbers between 1 and 6 when the dice are rolled. The update() and update2() methods are called when the user taps on the dice image to update the state and re-render the dice.
 
