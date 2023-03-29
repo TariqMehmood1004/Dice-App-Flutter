@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'dice-widget.dart';
+import 'dice_widget.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
@@ -13,14 +13,6 @@ class NavigationBarWidget extends StatefulWidget {
 class _NavigationBarWidgetState extends State<NavigationBarWidget> {
   int _currentIndex = 0;
   late PageController _pageController;
-
-  final List<DiceWidget> _diceList = [];
-
-  void _addDice() {
-    setState(() {
-      _diceList.add(const DiceWidget());
-    });
-  }
 
   @override
   void initState() {
@@ -40,13 +32,6 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
     const Dice(),
   ];
 
-  final List<int> _diceCounters = [0];
-  void _addCounter() {
-    setState(() {
-      _diceCounters.add(0);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,50 +48,8 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           const Dice2(),
           Container(
             color: Colors.transparent,
-            margin: const EdgeInsets.only(top: 200),
+            margin: const EdgeInsets.only(top: 20),
             child: const DiceScreen(),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 70,
-            alignment: Alignment.centerRight,
-            decoration: const BoxDecoration(
-              color: Colors.red,
-            ),
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                FloatingActionButton(
-                  backgroundColor: Colors.blueAccent,
-                  onPressed: () {
-                    setState(() {
-                      _addCounter;
-                      debugPrint('added widget');
-                    });
-                  },
-                  child: const Icon(
-                    Icons.delete,
-                    size: 25,
-                  ),
-                ),
-                FloatingActionButton(
-                  backgroundColor: Colors.black,
-                  onPressed: () {
-                    setState(
-                      () {
-                        _addDice;
-                        debugPrint('added widget');
-                      },
-                    );
-                  },
-                  child: const Icon(
-                    Icons.plus_one,
-                    size: 25,
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),
